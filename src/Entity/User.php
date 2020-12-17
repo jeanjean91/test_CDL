@@ -25,7 +25,7 @@ class User
     private $auteur;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
      */
     private $dateDeNaissance;
 
@@ -60,12 +60,12 @@ class User
         return $this;
     }
 
-    public function getDateDeNaissance(): ?\DateTimeInterface
+    public function getDateDeNaissance(): ?string
     {
         return $this->dateDeNaissance;
     }
 
-    public function setDateDeNaissance(\DateTimeInterface $dateDeNaissance): self
+    public function setDateDeNaissance(?string $dateDeNaissance): self
     {
         $this->dateDeNaissance = $dateDeNaissance;
 

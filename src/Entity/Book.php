@@ -23,7 +23,7 @@ class Book
     private $livre;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $date;
 
@@ -57,12 +57,12 @@ class Book
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(?string $date): self
     {
         $this->date = $date;
 

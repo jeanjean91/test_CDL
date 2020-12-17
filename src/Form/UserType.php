@@ -14,16 +14,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('auteur')
-            ->add('dateDeNaissance',DateTimeType::class,[
-                'required'   => false,
-                'label' => false,
-
-                'attr'=> [
-                    'required' => false,
-                    'label' => ''
-
-                ]
-            ])
+            ->add('dateDeNaissance')
         ;
     }
 
