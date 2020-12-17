@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Book;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,7 @@ class BookType extends AbstractType
     {
         $builder
             ->add('livre')
-            ->add('date')
+            ->add('date',)
             ->add('categorie')
             ->add('user')
         ;

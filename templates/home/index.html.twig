@@ -35,6 +35,12 @@
                                    {{ form_row(SearchBookType.auteur) }}
 
                               </div>
+                               <div id="ville"class="btn color-3 size-1" >
+
+
+                                   {{ form_row(SearchBookType.date) }}
+
+                              </div>
                               <!--  -->
                               <div id="type" class="btn color-3 size-1 " >
 
@@ -90,7 +96,7 @@
             <tr>
                 <td>{{ book.id }}</td>
                 <td>{{ book.livre }}</td>
-                <td>{{ book.date ? book.date|date('Y-m-d') : '' }}</td>
+                <td>{{ book.date ? book.date|date('Y') : '' }}</td>
                 <td>
                     {{ book.user }}
                 </td>
