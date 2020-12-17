@@ -1,8 +1,110 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme SearchBookType 'bootstrap_4_layout.html.twig' %}
 {% block title %}Test Symfony Le Comptoir des langues{% endblock %}
 
+
 {% block body %}
-<h1>Test Symfony</h1>
+
+
+
+<section>
+	<div class="container-fluid mt-4">
+        <div class="jumbotron">
+        	<div class="container-fluid custom-container" id="recherche">
+        		 <form class="d-flex">
+               <div class="row"style="margin-right:50px;">
+                    {{ form_start(SearchBookType) }}
+                    <div class="col-md-2 left-feild">
+
+
+                    </div>
+                    <div class="col-md-12 ">
+                         <div class="btn color-12 size-1 ">
+                              <div id="pays" class="btn color-3 size-1  "  >
+
+                                   {{ form_row(SearchBookType.nomLivre ) }}
+
+
+                              </div>
+
+                              <div id="ville"class="btn color-3 size-1" >
+
+
+                                   {{ form_row(SearchBookType.auteur) }}
+
+                              </div>
+                              <!--  -->
+                              <div id="type" class="btn color-3 size-1 " >
+
+                                   {{ form_row(SearchBookType.categorie) }}
+                              </div>
+
+
+
+
+                              <button class="btn btn-outline-success" type="submit">Search</button>
+
+
+
+
+
+
+                         </div>
+
+                    </div>
+                    {{ form_end(SearchBookType) }}
+
+
+      </form>
+
+               </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</section>
+
+<section>
+	<div class="container-fluid mt-4">
+        <div class="jumbotron">
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Livre</th>
+                <th>Date</th>
+                <th>Auteur</th>
+                <th>Categorie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.livre }}</td>
+                <td>{{ book.date ? book.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    {{ book.user }}
+                </td>
+                <td>
+                    {{ book.categorie }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+    </section>
 
 {% endblock %}

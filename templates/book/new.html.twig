@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New Book{% endblock %}
+
+{% block body %}
+    <h1>Create new Book</h1>
+    <a href="{{ path('user_new') }}">Ajouter un nouveau auteur</a>
+    <br>
+
+     <a href="{{ path('categorys_new') }}">Ajouter une nouvelle  categorie</a>
+
+    {{ include('book/_form.html.twig') }}
+
+    <a href="{{ path('book_index') }}">Liste/edition des livres </a>
+
+{% endblock %}
