@@ -25,27 +25,16 @@ class SearchBookType extends AbstractType
     {
         $builder
 
-            ->add('nomLivre')
-            ->add('auteur' ,ChoiceType::class, [
-                'required'   => false,
-                'label' => false,
-                'attr'=> [
-
-                    ' placeHolder' => 'Auteur']
-                ])
+            ->add('livre')
+            
              ->add('date')
 
            
             ->add('categorie')
-            ->add('auteur')
+            ->add('user')
 
 
             ;
-
-         /* ->add('submit',SubmitType::class,[
-               'label'=> 'search'
-           ]);*/
-
 
     }
 
@@ -59,6 +48,10 @@ class SearchBookType extends AbstractType
             'method' => 'get',
             'csrf_protection' => false
         ]);
+    }
+    public function getBlockPrefix()
+    {
+        return '';
     }
    
 

@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Entity\SearchBook;
 use App\Repository\BookRepository;
+use App\Form\SearchBookType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -78,6 +80,31 @@ class BookController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/home_search", name="home.search")
+     */
+    /*public function SearchBook(BookRepository $bookRepository, Request $request)
+
+    {
+
+         $search = new SearchBook();
+        $searchform = $this->createForm(SearchBookType::class, $search);
+
+
+        if ($searchform->handleRequest($request)->isSubmitted() && $searchform->isValid()) {
+            $search = $searchform->getData();
+            $searchBook = $bookRepository->findAllBy($search);
+
+
+        return $this->render('home/search.html.twig', [
+            
+            'books' =>  $search,
+            'SearchBookType' => $searchform->createView()
+        ]);
+
+    }
+    }
+*/
     /**
      * @Route("/{id}", name="book_delete", methods={"DELETE"})
      */

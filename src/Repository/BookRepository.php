@@ -3,6 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Book;
+use App\Entity\SearchBook;
+use App\Form\SearchBookType;
+use Doctrine\ORM\Query;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use phpDocumentor\Reflection\Types\This;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -49,37 +54,41 @@ class BookRepository extends ServiceEntityRepository
     */
 
 
+    /**
+     * @param SearchBook $search
+     * @return Query
+     */
 
-public function findAllBy(SearchBook $research):Query
+public function findAllBy(SearchBook $search):Query
     {
 
        /* condition des requette pour la recherche de livres'*/
 
         $query= $this->createQueryBuilder('e');
 
-        if ($research->getNomLivre()){
+        if ($search->getLivre()){
             $query = $query
-                ->andWhere('e.nomLivre = :nomLivre')
-                -> setParameter('nomLivre', $research->getNomLivre());
+                ->andWhere('e.livre = :livre')
+                -> setParameter('livre', $search->getLivre());
         }
 
 
-        if ($research->getAuteur()){
+        if ($search->getUser()){
             $query = $query
-                ->andWhere('e.auteur = :auteur')
-                -> setParameter('auteur', $research->getAuteur());
+                ->andWhere('e.user = :user')
+                -> setParameter('user', $search->getUser());
         }
 
-        if ($research->getCategorie()){
+        if ($search->getCategorie()){
             $query = $query
                 ->andWhere('e.categorie = :categorie')
-                -> setParameter('categorie', $research->getCategorie());
+                -> setParameter('categorie', $search->getCategorie());
         }
 
-        if ($research->getDate()){
+        if ($search->getDate()){
             $query = $query
                 ->andWhere('e.date = :date')
-                -> setParameter('date', $research->getDate());
+                -> setParameter('date', $search->getDate());
         }
 
         return $query->getQuery();
@@ -92,6 +101,32 @@ public function findAllBy(SearchBook $research):Query
 
 
 
+
+    /***
+     * @return Query
+     */
+
+    /*public function findAllBy(SearchBook $search)
+    {
+        return $this->createQueryBuilder('e')
+
+
+        
+
+                 ->andWhere('e.livre = :Livre')
+                -> setParameter('Livre',$search->getLivre())
+                 ->andWhere('e.user = :User')
+                 -> setParameter('User',$search->getUser())
+                ->andWhere('e.categorie= :Categorie')
+                 -> setParameter('Categorie',$search->getCategorie())
+               ->andWhere('e.date <= :Date')
+                -> setParameter('Date',$search->getDate())
+                ->getQuery()
+                ->getResult();
+                //->orderBy('e.date', 'DESC')
+
+
+}*/
 
 
 
