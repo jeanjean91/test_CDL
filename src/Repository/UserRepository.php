@@ -47,4 +47,20 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+
+    /*public function findByExampleField($projet): array
+    {
+         
+            $connect =$this->createQueryBuilder('i')
+            ->select('i.dateDeNaissance')
+            ->andWhere('i.book = :book')
+            ->setParameter('book', $projet)
+            ->getQuery();
+
+        return $connect ->execute();
+    }*/
 }

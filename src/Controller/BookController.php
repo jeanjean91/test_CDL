@@ -24,7 +24,7 @@ class BookController extends AbstractController
     public function index(BookRepository $bookRepository): Response
     {
         return $this->render('book/index.html.twig', [
-            'books' => $bookRepository->findAll(),
+            'book' => $bookRepository->findAll(),
         ]);
     }
 
@@ -128,30 +128,31 @@ class BookController extends AbstractController
   /**
      * @Route("/", name="book_index", methods={"GET"})
      */
-    public function search(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator): Response
+    /*public function search(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator): Response
 
 
     {
 
         
 
-           $search = new SearchBook();
-        $searchform = $this->createForm(SearchBookType::class, $search);
-
+         $research = new SearchBook();
+        $searchform = $this->createForm(SearchBookType::class, $research);
+        
+    
 
         if ($searchform->handleRequest($request)->isSubmitted() && $searchform->isValid()) {
             $search = $searchform->getData();
             $searchBook = $bookRepository->findAllBy($search);
-            $book = $paginator->paginate(
+            $Books == $paginator->paginate(
             // Doctrine Query, not results
-                $searchBook,
+                $searchBook ,
                 // Define the page parameter
                 $request->query->getInt('page', 1),
                 // Items per page
                 4 );
-
-            var_dump($book);
-       if ($book == null) {
+            var_dump($research);
+          
+       if ($searchBook == null) {
                 $this->addFlash('erreur', 'Aucun article contenant ce mot clé dans le titre n\'a été trouvé, essayez en un autre.');
            
             }
@@ -170,7 +171,7 @@ class BookController extends AbstractController
     }
 
 
-
+*/
 
 
 

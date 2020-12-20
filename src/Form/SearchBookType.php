@@ -30,8 +30,35 @@ class SearchBookType extends AbstractType
              ->add('date')
 
            
-            ->add('categorie')
-            ->add('user')
+            ->add('user',ChoiceType::class, [
+                'required'   => false,
+                'label' => 'Auteur',
+                'attr'=> [
+
+                    ' placeHolder' => 'Auteur'
+                ],
+                'choices' => [
+                    'J.k Rowling' => 'J.k Rowling',
+                    'Uderzo' => 'Uderzo',
+                    'Masashi Kishimoto'   => 'Masashi Kishimoto',
+                    'Guillaume Musso'   => 'Guillaume Musso',
+                ]
+            ])
+            
+            ->add('categorie',ChoiceType::class, [
+                'required'   => false,
+                'label' => 'Categorie',
+                'attr'=> [
+
+                    ' placeHolder' => 'Categorie'
+                ],
+                'choices' => [
+                    'Bd' => 'BD',
+                    'roman' => 'romnan',
+                    'manga'   => 'manga',
+                    
+                ]
+                ])
 
 
             ;

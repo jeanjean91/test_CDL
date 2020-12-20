@@ -64,7 +64,7 @@ public function findAllBy(SearchBook $search):Query
 
        /* condition des requette pour la recherche de livres'*/
 
-        $query= $this->createQueryBuilder('e');
+       $query= $this->createQueryBuilder('e');
 
         if ($search->getLivre()){
             $query = $query
@@ -81,8 +81,8 @@ public function findAllBy(SearchBook $search):Query
 
         if ($search->getCategorie()){
             $query = $query
-                ->andWhere('e.categorie = :categorie')
-                -> setParameter('categorie', $search->getCategorie());
+                ->andWhere('e.categorie_id = :categorie_id')
+                -> setParameter('categorie_id', $search->getCategorie());
         }
 
         if ($search->getDate()){
@@ -105,29 +105,29 @@ public function findAllBy(SearchBook $search):Query
     /***
      * @return Query
      */
-
-    /*public function findAllBy(SearchBook $search)
+/*
+    public function findAllBy(SearchBook $search)
     {
         return $this->createQueryBuilder('e')
 
 
         
 
-                 ->andWhere('e.livre = :Livre')
-                -> setParameter('Livre',$search->getLivre())
-                 ->andWhere('e.user = :User')
-                 -> setParameter('User',$search->getUser())
-                ->andWhere('e.categorie= :Categorie')
-                 -> setParameter('Categorie',$search->getCategorie())
-               ->andWhere('e.date <= :Date')
-                -> setParameter('Date',$search->getDate())
+                 ->andWhere('e.livre = :livre')
+                -> setParameter('livre',$search->getLivre())
+                 ->andWhere('e.user = :user')
+                 -> setParameter('user',$search->getUser())
+                ->andWhere('e.categorie = :categorie')
+                 -> setParameter('categorie',$search->getCategorie())
+               ->andWhere('e.date = :date')
+                -> setParameter('date',$search->getDate())
                 ->getQuery()
                 ->getResult();
                 //->orderBy('e.date', 'DESC')
 
 
-}*/
-
+}
+*/
 
 
 

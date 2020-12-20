@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
+use App\Repository\UserRepository;
 use App\Entity\SearchBook;
 use App\Form\SearchBookType;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,10 +18,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator): Response
+    public function index(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator ): Response
 
 
     {
+/*
+    	 $auteur = $repo->findByExampleField($id);*/
     	 $allbook = $bookRepository->findAll();
     	  $book = $paginator->paginate(
             // Doctrine Query, not results
@@ -58,6 +61,7 @@ class HomeController extends AbstractController
 }
         return $this->render('home/index.html.twig', [
             'books' => $book,
+           /* 'auteur'=> $auteur,*/
             'SearchBookType' => $searchform->createView()
         ]);
     }

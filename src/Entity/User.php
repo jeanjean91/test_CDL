@@ -59,7 +59,10 @@ class User
 
         return $this;
     }
-    
+
+    /**
+    * @return string|null
+    */
     public function getDateDeNaissance(): ?string
     {
         return $this->dateDeNaissance;
