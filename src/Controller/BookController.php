@@ -7,6 +7,7 @@ use App\Form\BookType;
 use App\Entity\SearchBook;
 use App\Repository\BookRepository;
 use App\Form\SearchBookType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -118,4 +119,60 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('book_index');
     }
+
+
+
+
+
+
+  /**
+     * @Route("/", name="book_index", methods={"GET"})
+     */
+    public function search(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator): Response
+
+
+    {
+
+        
+
+           $search = new SearchBook();
+        $searchform = $this->createForm(SearchBookType::class, $search);
+
+
+        if ($searchform->handleRequest($request)->isSubmitted() && $searchform->isValid()) {
+            $search = $searchform->getData();
+            $searchBook = $bookRepository->findAllBy($search);
+            $book = $paginator->paginate(
+            // Doctrine Query, not results
+                $searchBook,
+                // Define the page parameter
+                $request->query->getInt('page', 1),
+                // Items per page
+                4 );
+
+            var_dump($book);
+       if ($book == null) {
+                $this->addFlash('erreur', 'Aucun article contenant ce mot clé dans le titre n\'a été trouvé, essayez en un autre.');
+           
+            }
+             return $this->redirectToRoute('home');
+        
+    }
+
+
+
+        return $this->render('book/index.html.twig', [
+            
+            'books' =>  $Books,
+    
+            'SearchBookType' => $searchform->createView()
+        ]);
+    }
+
+
+
+
+
+
+
 }

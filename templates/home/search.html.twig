@@ -24,7 +24,7 @@
                          <div class="btn color-12 size-1 ">
                               <div id="pays" class="btn color-3 size-1  "  >
 
-                                   {{ form_row(SearchBookType.nomLivre ) }}
+                                   {{ form_row(SearchBookType.livre ) }}
 
 
                               </div>
@@ -32,7 +32,7 @@
                               <div id="ville"class="btn color-3 size-1" >
 
 
-                                   {{ form_row(SearchBookType.auteur) }}
+                                   {{ form_row(SearchBookType.user) }}
 
                               </div>
                                <div id="ville"class="btn color-3 size-1" >
@@ -76,43 +76,5 @@
 
 
 </section>
-
-<section>
-	<div class="container-fluid mt-4">
-        <div class="jumbotron">
-
-<table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Livre</th>
-                <th>Date</th>
-                <th>Auteur</th>
-                <th>Categorie</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for book in books %}
-            <tr>
-                <td>{{ book.id }}</td>
-                <td>{{ book.livre }}</td>
-                <td>{{ book.date ? book.date|date('Y') : '' }}</td>
-                <td>
-                    {{ book.user }}
-                </td>
-                <td>
-                    {{ book.categorie }}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-</div>
-    </section>
 
 {% endblock %}

@@ -3,7 +3,79 @@
 {% block title %}Book index{% endblock %}
 
 {% block body %}
-    <h1>Book index</h1>
+    <h1>Liste des livres</h1>
+
+
+    <section>
+    <div class="container-fluid mt-4">
+        <div class="jumbotron">
+
+            <h2 style="margin-left: 300px;"> RECHERCHER UN LIVRE</h2>
+            <div class="container-fluid custom-container" id="recherche">
+        <form class="d-flex">
+               <div class="row"style="margin-right:50px;">
+                    {{ form_start(SearchBookType) }}
+                    <div class="col-md-2 left-feild">
+
+
+                    </div>
+                    <div class="col-md-12 ">
+                         <div class="btn color-12 size-1 ">
+                              <div id="pays" class="btn color-3 size-1  "  >
+
+                                   {{ form_row(SearchBookType.livre ) }}
+
+
+                              </div>
+
+                              <div id="ville"class="btn color-3 size-1" >
+
+
+                                   {{ form_row(SearchBookType.user) }}
+
+                              </div>
+                               <div id="ville"class="btn color-3 size-1" >
+
+
+                                   {{ form_row(SearchBookType.date) }}
+
+                              </div>
+                              <!--  -->
+                              <div id="type" class="btn color-3 size-1 " >
+
+                                   {{ form_row(SearchBookType.categorie) }}
+                              </div>
+
+                              <div id="type" class="btn color-3 size-1 " >
+
+
+                              <button class="btn btn-outline-success" type="submit">Search</button>
+
+                                </div>
+
+
+
+
+                         </div>
+
+                    </div>
+                    {{ form_end(SearchBookType) }}
+
+
+        </form>
+
+               </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</section>
+
 
     <table class="table">
         <thead>
