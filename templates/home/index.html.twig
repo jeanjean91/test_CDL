@@ -89,6 +89,7 @@
                 <th>Date</th>
                 <th>Auteur</th>
                 <th>Categorie</th>
+                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -103,12 +104,16 @@
                 <td>
                     {{ book.categorie }}
                 </td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">effacer ?</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">editer ?</a>
+                </td>
             </tr>
         {% else %}
             <tr>
                 <td colspan="4">no records found</td>
             </tr>
-           
+
         {% endfor %}
 
         </tbody>
@@ -117,5 +122,10 @@
 </div>
 </div>
     </section>
+
+
+
+   
+    </table>
 
 {% endblock %}

@@ -11,14 +11,29 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('field_name')
+           ->add('categorie',ChoiceType::class, [
+                'required'   => false,
+                'label' => 'Categorie',
+                'attr'=> [
+
+                    ' placeHolder' => 'Categorie'
+                ],
+                'choices' => [
+                    'Bd' => 'BD',
+                    'roman' => 'romnan',
+                    'manga'   => 'manga',
+                    
+                ]
+                ])
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => SearchBook::class,
+            'method' => 'get',
+            'csrf_protection' => false
         ]);
     }
 }

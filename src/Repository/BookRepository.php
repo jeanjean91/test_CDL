@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Book;
 use App\Entity\SearchBook;
 use App\Form\SearchBookType;
+use App\Form\SearchType;
 use Doctrine\ORM\Query;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\Types\This;
@@ -81,8 +82,8 @@ public function findAllBy(SearchBook $search):Query
 
         if ($search->getCategorie()){
             $query = $query
-                ->andWhere('e.categorie_id = :categorie_id')
-                -> setParameter('categorie_id', $search->getCategorie());
+                ->andWhere('e.categorie = :categorie')
+                -> setParameter('categorie', $search->getCategorie());
         }
 
         if ($search->getDate()){
@@ -95,9 +96,21 @@ public function findAllBy(SearchBook $search):Query
 
     }
 
+        /**
+         * @return Book int
+          */
+ public function findByExampleField($search): int
+    {
+         
+            $connect =$this->createQueryBuilder('i')
+            ->select('i.livre')
+            ->andWhere('i.categorie = :categorie')
+            ->setParameter('categorie', $search)
+            ->getQuery();
 
-
-
+        return    $connect ->execute();
+    }
+    
 
 
 

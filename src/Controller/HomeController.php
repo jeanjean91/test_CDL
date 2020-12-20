@@ -31,8 +31,9 @@ class HomeController extends AbstractController
                 // Define the page parameter
                 $request->query->getInt('page', 1),
                 // Items per page
-                8 );
-                
+                9 );
+
+              
 
 
     	  $search = new SearchBook();
@@ -42,13 +43,14 @@ class HomeController extends AbstractController
         if ($searchform->handleRequest($request)->isSubmitted() && $searchform->isValid()) {
             $search = $searchform->getData();
             $searchBook = $bookRepository->findAllBy($search);
+            /*$cat =  $bookRepository->findByExampleField($search); */
             $book = $paginator->paginate(
             // Doctrine Query, not results
-                $searchBook,
+                $searchBook ,
                 // Define the page parameter
                 $request->query->getInt('page', 1),
                 // Items per page
-                8 );
+                9 );
 
            /* var_dump($book);*/
 
@@ -58,10 +60,11 @@ class HomeController extends AbstractController
             }
 
 
+
 }
         return $this->render('home/index.html.twig', [
             'books' => $book,
-           /* 'auteur'=> $auteur,*/
+         
             'SearchBookType' => $searchform->createView()
         ]);
     }
