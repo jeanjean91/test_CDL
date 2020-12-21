@@ -25,7 +25,7 @@ class User
     private $auteur;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
      */
     private $dateDeNaissance;
 

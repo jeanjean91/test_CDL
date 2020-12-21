@@ -53,8 +53,8 @@ class SearchBookType extends AbstractType
                     ' placeHolder' => 'Categorie'
                 ],
                 'choices' => [
-                    'Bd' => '2',
                     'roman' => '1',
+                    'Bd' => '2',
                     'manga'   => '3',
                     
                 ]

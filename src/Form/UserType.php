@@ -14,11 +14,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('auteur')
-            ->add('dateDeNaissance',BirthdayType::class, [
-    'placeholder' => [
-        'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
-    ]
-])
+            ->add('dateDeNaissance')
         ;
     }
 

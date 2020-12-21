@@ -12,18 +12,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Translator;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(BookRepository $bookRepository, Request $request , PaginatorInterface $paginator ): Response
+    public function index(BookRepository $bookRepository,UserRepository $repo, Request $request , PaginatorInterface $paginator/*, Translator $translator */): Response
 
 
     {
-/*
-    	 $auteur = $repo->findByExampleField($id);*/
+
+        /* $translator = new Translator('fr_FR');
+        $translator->addResource('array', [
+            'SEARCH FOR A BOOK !' => 'CHERCHER UN LIVRE !',
+        ], 'fr_FR');
+*/
+
+
+    	 $auteur = $repo->findAll();
     	 $allbook = $bookRepository->findAll();
     	  $book = $paginator->paginate(
             // Doctrine Query, not results
@@ -52,7 +60,7 @@ class HomeController extends AbstractController
                 // Items per page
                 9 );
 
-           /* var_dump($book);*/
+           /* var_dump($auteur);*/
 
             if ($book == null) {
                 $this->addFlash('erreur', 'Aucun article contenant ce mot clé dans le titre n\'a été trouvé, essayez en un autre.');
@@ -64,7 +72,7 @@ class HomeController extends AbstractController
 }
         return $this->render('home/index.html.twig', [
             'books' => $book,
-         
+         	'user' => $auteur,
             'SearchBookType' => $searchform->createView()
         ]);
     }
