@@ -45,9 +45,9 @@ class HomeController extends AbstractController
             $searchBook = $bookRepository->findAllBy($search);
             /*$cat =  $bookRepository->findByExampleField($search); */
             $book = $paginator->paginate(
-            // Doctrine Query, not results
+           
                 $searchBook ,
-                // Define the page parameter
+                
                 $request->query->getInt('page', 1),
                 // Items per page
                 9 );

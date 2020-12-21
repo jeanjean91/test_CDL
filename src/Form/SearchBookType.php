@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -38,10 +38,10 @@ class SearchBookType extends AbstractType
                     ' placeHolder' => 'Auteur'
                 ],
                 'choices' => [
-                    'J.k Rowling' => 'J.k Rowling',
-                    'Uderzo' => 'Uderzo',
-                    'Masashi Kishimoto'   => 'Masashi Kishimoto',
-                    'Guillaume Musso'   => 'Guillaume Musso',
+                    'J.k Rowling' => '1',
+                    'Uderzo' => '2',
+                    'Masashi Kishimoto'   => '3',
+                    'Guillaume Musso'   => '4',
                 ]
             ])
             
@@ -53,9 +53,9 @@ class SearchBookType extends AbstractType
                     ' placeHolder' => 'Categorie'
                 ],
                 'choices' => [
-                    'Bd' => 'BD',
-                    'roman' => 'romnan',
-                    'manga'   => 'manga',
+                    'Bd' => '2',
+                    'roman' => '1',
+                    'manga'   => '3',
                     
                 ]
                 ])
